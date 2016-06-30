@@ -1,11 +1,13 @@
 from flask import render_template, flash, redirect
 from app import app
-from .forms import urlForm
+from .forms import urlForm, emptyForm
+
+i = 0
 
 @app.route('/')
 @app.route('/index', methods=['GET'])
 def index():
-    return 'hello world'
+    return render_template('index.html')
 
 @app.route('/<int:i>', methods=['GET', 'POST'])
 def video(i):
