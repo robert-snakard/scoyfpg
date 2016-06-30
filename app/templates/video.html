@@ -1,0 +1,31 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% endif %}
+  </head>
+  <h1>ScoyFPG</h1>
+  <form action="" method="post" name="url_field">
+    {{ form.hidden_tag() }}
+    <p>
+      Please enter a YouTube url<br>
+      {{ form.url_val }}
+    </p>
+    <p><input type="submit" value="Enter"></p>
+  </form>
+  <br>
+
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+  {% for message in messages %}
+  <p>Message: {{ message }}</p>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+
+  {% if url_data %}
+  <iframe width="560" height="315" src="http://www.youtube.com/embed/{{ url_data }}?autoplay=1" frameborder="0" allowfullscreen>
+  </iframe>
+  {% endif %}
+
+</html>
